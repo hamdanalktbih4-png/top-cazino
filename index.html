@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>توب كزينو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap">
+<style>
+:root{--ink:#05060a;--panel:#0c1018;--line:rgba(255,255,255,.07);--fg:#f2f6fc;--dim:#8a97ab;--gold:#f6c453;--gold2:#ffe6a8;--mint:#2ee6a8;--red:#e5484d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--fg);font-family:Cairo,system-ui,sans-serif;font-size:14px}
+#app{max-width:700px;margin:0 auto;min-height:100vh;border-inline:1px solid var(--line);position:relative;overflow-x:hidden}
+.hd{display:flex;align-items:center;gap:9px;padding:11px 13px;background:#0c1018;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.crest{width:40px;height:44px;flex:none}
+.crest svg{width:100%;height:100%}
+.bn b{display:block;font-size:14px;font-weight:900;background:linear-gradient(96deg,#fff,#ffe6a8 45%,#f6c453 60%,#fff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 7s linear infinite}
+@keyframes sh{to{background-position:250% 0}}
+.bn s{font-size:7px;letter-spacing:3px;color:#5f6b7d;text-decoration:none}
+.sp{flex:1}
+.pill{border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:5px 9px;font-size:10.5px}
+.pill b{color:var(--mint);font-variant-numeric:tabular-nums}
+.btn{border:0;border-radius:9px;font:inherit;font-size:11.5px;font-weight:800;cursor:pointer;padding:9px 13px;min-height:36px}
+.btn.gold{background:linear-gradient(180deg,#ffe9b3,#f6c453 55%,#d19a1c);color:#241703}
+.btn.glass{background:rgba(255,255,255,.06);color:#dbe6f4;border:1px solid rgba(255,255,255,.12)}
+.tabs{display:flex;gap:2px;padding:7px 12px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;background:#070a10;position:sticky;top:63px;z-index:19}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{font-size:11px;color:var(--dim);padding:6px 11px;border-radius:8px;white-space:nowrap;cursor:pointer;font-weight:600}
+.tabs a.on{color:#241703;background:linear-gradient(180deg,#ffe9b3,#f0bb3f);font-weight:800}
+main{padding:13px 13px 60px}
+.hero{border-radius:16px;padding:22px 17px;margin-bottom:14px;border:1px solid rgba(246,196,83,.25);background:radial-gradient(120% 90% at 85% 0%,rgba(123,70,232,.32),transparent 58%),linear-gradient(140deg,#1a1305,#120f1c 48%,#070a10);position:relative;overflow:hidden}
+.k{font-size:8px;letter-spacing:4px;color:var(--gold);font-weight:800}
+.hero h1{font-size:23px;line-height:1.25;margin:8px 0 6px;font-weight:900;letter-spacing:-.5px;max-width:320px}
+.hero h1 em{font-style:normal;background:linear-gradient(180deg,#fff8e6,#f6c453 62%,#b7820f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:11.5px;color:#a8b6c9;line-height:1.85;margin:0 0 13px;max-width:300px}
+.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.sec{display:flex;justify-content:space-between;align-items:center;margin:16px 0 9px}
+.sec b{font-size:13.5px;font-weight:900}
+.sec span{font-size:10px;color:var(--gold);font-weight:700;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.gc{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--panel);cursor:pointer;transition:transform .18s,border-color .18s}
+.gc:hover{transform:translateY(-3px);border-color:rgba(246,196,83,.5)}
+.gc .art{aspect-ratio:1;position:relative;display:grid;place-items:center;font-size:26px}
+.gc .art:before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 30% 10%,rgba(255,255,255,.2),transparent 55%),linear-gradient(200deg,transparent 40%,rgba(0,0,0,.5))}
+.gc .nm{display:flex;justify-content:space-between;padding:6px 7px;font-size:9.5px;font-weight:700;background:rgba(8,11,17,.9)}
+.gc .nm i{font-style:normal;font-size:8px;color:#5f6b7d}
+.rt{position:absolute;top:5px;inset-inline-start:5px;z-index:2;font-size:7px;font-weight:900;padding:2px 4px;border-radius:4px;background:rgba(3,5,9,.85);color:#8ff0c4}
+.live{position:absolute;bottom:5px;inset-inline-start:5px;z-index:2;font-size:7px;font-weight:900;padding:2px 5px;border-radius:4px;background:rgba(46,230,168,.16);color:#7ff0c2;border:1px solid rgba(46,230,168,.35)}
+.card{border-radius:13px;padding:13px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(17,23,34,.95),rgba(9,13,19,.98));margin-bottom:10px}
+.card h3{margin:0 0 4px;font-size:11px;color:var(--dim);font-weight:700}
+.v{font-size:20px;font-weight:900;font-variant-numeric:tabular-nums}
+.v.g{background:linear-gradient(180deg,#ffe9b3,#e6b23a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:#5f6b7d;font-size:10px;line-height:1.8}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.fld{width:100%;background:#0a0e15;border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:10px 11px;color:var(--fg);font:inherit;font-size:14px;margin-bottom:8px}
+.fld:focus{outline:0;border-color:rgba(246,196,83,.65)}
+.tag{font-size:8.5px;font-weight:800;padding:3px 6px;border-radius:5px;background:rgba(46,230,168,.16);color:#7ff0c2}
+.toast{position:fixed;bottom:16px;inset-inline:16px;max-width:660px;margin:auto;background:#132330;border:1px solid #2d4a63;padding:10px 13px;border-radius:9px;font-size:11.5px;opacity:0;transition:.2s;pointer-events:none;z-index:60}
+.toast.on{opacity:1}
+.toast.err{background:#2c1219;border-color:#5c2430;color:#ffd7dd}
+.modal{position:fixed;inset:0;background:rgba(3,5,9,.8);display:none;align-items:center;justify-content:center;z-index:50;padding:14px}
+.modal.on{display:flex}
+.sheet{background:#0c1018;border:1px solid var(--line);border-radius:14px;padding:15px;width:100%;max-width:420px}
+nav.bot{position:fixed;bottom:0;inset-inline:0;max-width:700px;margin:auto;display:flex;background:#0c1018;border-top:1px solid var(--line);z-index:30}
+nav.bot a{flex:1;text-align:center;padding:8px 0 10px;font-size:9px;color:var(--dim);cursor:pointer}
+nav.bot a b{display:block;font-size:16px;font-weight:400}
+nav.bot a.on{color:var(--gold)}
+@media(min-width:520px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:760px){.grid{grid-template-columns:repeat(5,1fr)}nav.bot{display:none}main{padding-bottom:20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="hd">
+    <div class="crest"><svg viewBox="0 0 44 48"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3d0"/><stop offset=".45" stop-color="#f6c453"/><stop offset="1" stop-color="#9c6d08"/></linearGradient></defs><path d="M22 2 40 11v20L22 46 4 31V11z" fill="url(#g1)" stroke="rgba(255,255,255,.35)" stroke-width=".7"/><text x="22" y="28" text-anchor="middle" font-size="14" font-weight="900" fill="#2a1c02">TC</text></svg></div>
+    <div class="bn"><b>توب كزينو</b><s>TOP CASINO</s></div>
+    <div class="sp"></div>
+    <div class="pill">الرصيد <b id="bal">0.00 $</b></div>
+    <button class="btn gold" onclick="openW('dep')">إيداع</button>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <main id="view"></main>
+  <nav class="bot" id="bot"></nav>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script>
+const RATES={BTC:96000,ETH:3200,USDT:1,TRX:0.24,LTC:92,SOL:180};
+const NAMES={BTC:'بيتكوين',ETH:'إيثيريوم',USDT:'تيثر TRC20',TRX:'ترون',LTC:'لايتكوين',SOL:'سولانا'};
+const B58='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const rnd=(n,s)=>[...Array(n)].map(()=>s[Math.floor(Math.random()*s.length)]).join('');
+const usd=v=>Number(v).toFixed(2)+' $';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&','<':'<','>':'>','"':'"'}[c]));
+const $=id=>document.getElementById(id);
+
+let db;
+try{db=JSON.parse(localStorage.getItem('tc'))}catch(e){}
+if(!db)db={bal:0,bonus:0,txs:[],addr:{},user:null};
+const save=()=>localStorage.setItem('tc',JSON.stringify(db));
+
+const G=[];
+const PG='Fortune Tiger|126;Mahjong Ways|65;Fortune Ox|98;Pinata Wins|1492288;Cash Mania|1682240;Fortune Rabbit|1543462;Dragon Hatch|57;Midas Fortune|1402846;Wild Bandito|104;Lucky Piggy|130;Gem Saviour|2;Ganesha Gold|42;Buffalo Win|108;Dragon Legend|29;Wild Ape|1508783;Anubis Wrath|1623475;Honey Trap of Diao Chan|1;Fortune Mouse|68;Mahjong Ways 2|74;Dragon Hatch 2|1451122';
+const PP='Gates of Olympus|vs20olympx;Sugar Rush|vs20sugarrush;Sweet Bonanza|vs5sb;The Dog House|vs20doghouse;Starlight Princess|vs20starlight;Big Bass Bonanza|vs10bb;Wolf Gold|vs20wolfgold;Fruit Party|vs20fruitparty';
+const add=(s,p)=>s.split(';').forEach(x=>{const[a,b]=x.split('|');G.push({n:a,id:b,p})});
+add(PG,'PG Soft');add(PP,'Pragmatic Play');
+const TH=['Olympus','Giza','Aztec','Dragon','Samurai','Viking','Pharaoh','Midas','Kraken','Ninja','Candy','Panda','Wolf','Tiger','Zeus','Anubis'];
+const PT=['{x} of {y}','Book of {x}','Wild {x}','{x} Gold','Cash {x}','{x} Storm'];
+const PV=['Hacksaw','Nolimit City','Push Gaming','Relax','BGaming'];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+while(G.length<300){const n=pick(PT).replace('{x}',pick(TH)).replace('{y}',pick(TH));
+  if(!G.some(g=>g.n===n))G.push({n,p:pick(PV),rtp:(92.5+Math.random()*4).toFixed(1)})}
+const EMO=['🐉','💎','👑','🔥','⚡','🍭','🏛️','🦁','🐺','🎰','🍒','🪙','🧿','🦅','🗿'];
+const hue=s=>[...s].reduce((h,c)=>(h*31+c.charCodeAt(0))%360,0);
+const url=g=>g.p==='PG Soft'?`https://public.pg-demo.com/demo/?gi=${g.id}&lang=en`
+  :`https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=${g.id}&lang=en&cur=USD&jurisdiction=99`;
+
+function toast(m,err){const t=$('toast');t.textContent=m;t.className='toast on'+(err?' err':'');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.className='toast',2500)}
+function paint(){const b=$('bal');if(b)b.textContent=usd(db.bal)}
+
+let tab='home',q='';
+const TABS=[['home','الرئيسية'],['games','الألعاب'],['wallet','المحفظة']];
+function nav(){
+  $('tabs').innerHTML=TABS.map(([k,l])=>`<a class="${tab===k?'on':''}" onclick="go('${k}')">${l}</a>`).join('');
+  $('bot').innerHTML=TABS.map(([k,l])=>`<a class="${tab===k?'on':''}" onclick="go('${k}')"><b>${{home:'⌂',games:'▦',wallet:'◈'}[k]}</b>${l}</a>`).join('');
+}
+function go(t){tab=t;render()}
+
+function card(g){
+  return `<div class="gc" ${g.id?`onclick="location.href='${url(g)}'"`:`onclick="mock('${esc(g.n)}')"`}>
+    <div class="art" style="background:radial-gradient(circle at 50% 30%,hsl(${hue(g.n)} 55% 24%),hsl(${hue(g.n)} 60% 8%) 70%)">${EMO[hue(g.n)%EMO.length]}
+    <span class="rt">${g.rtp||'96.5'}%</span>${g.id?'<span class="live">مباشر</span>':''}</div>
+    <div class="nm"><span>${esc(g.n)}</span><i>${g.p}</i></div></div>`;
+}
+function render(){
+  nav();paint();
+  const v=$('view');
+  if(tab==='home'){
+    v.innerHTML=`<div class="hero"><div class="k">مكافأة ترحيب</div>
+      <h1>تجربة <em>استثنائية</em><br>بمعايير عالمية</h1>
+      <p>${G.filter(g=>g.id).length} لعبة مزوّد تعمل الآن، وإيداع كريبتو فوري.</p>
+      <div class="row"><button class="btn gold" onclick="go('games')">ابدأ اللعب</button>
+      <button class="btn glass" onclick="openW('dep')">إيداع</button></div></div>
+      <div class="sec"><b>مختارة لك</b><span onclick="go('games')">عرض الكل</span></div>
+      <div class="grid">${G.filter(g=>g.id).slice(0,10).map(card).join('')}</div>`;
+  }else if(tab==='games'){
+    const list=G.filter(g=>!q||g.n.toLowerCase().includes(q)).slice(0,60);
+    v.innerHTML=`<input class="fld" placeholder="ابحث عن لعبة" value="${esc(q)}" oninput="q=this.value.toLowerCase();render()">
+      <p class="muted">${list.length} لعبة · الديمو يفتح في نافذة جديدة</p>
+      <div class="grid">${list.map(card).join('')}</div>`;
+  }else{
+    v.innerHTML=`<div class="two"><div class="card"><h3>نقدي</h3><div class="v">${usd(db.bal)}</div></div>
+      <div class="card"><h3>مكافأة</h3><div class="v g">${usd(db.bonus)}</div></div></div>
+      <div class="card"><h3>آخر العمليات</h3>${db.txs.length?db.txs.slice(0,8).map(t=>
+        `<div class="muted">${t.k} · ${usd(t.a)}</div>`).join(''):'<p class="muted">لا عمليات</p>'}</div>
+      <div class="card"><button class="btn gold" onclick="openW('dep')">إيداع</button>
+      <button class="btn glass" onclick="openW('wd')">سحب</button></div>`;
+  }
+}
+
+let coin='USDT';
+function openW(m){
+  $('modal').classList.add('on');
+  if(m==='dep'){
+    if(!db.addr[coin])db.addr[coin]=coin==='ETH'?'0x'+rnd(40,'0123456789abcdef'):'T'+rnd(33,B58);
+    $('sheet').innerHTML=`<h3 style="margin:0 0 8px;font-size:13px">إيداع</h3>
+      <div class="row" style="margin-bottom:8px">${Object.keys(RATES).map(c=>
+        `<button class="btn ${coin===c?'gold':'glass'}" onclick="coin='${c}';openW('dep')">${c}</button>`).join('')}</div>
+      <input class="fld" id="amt" type="number" value="50">
+      <p class="muted">أرسل ${NAMES[coin]} إلى:</p>
+      <div style="background:#04060a;border:1px dashed #2b3a4c;border-radius:8px;padding:9px;font-family:monospace;font-size:10px;color:#8ff0c4;word-break:break-all">${db.addr[coin]}</div>
+      <div class="row" style="margin-top:10px"><button class="btn gold" onclick="dep()">أرسلت المبلغ</button>
+      <button class="btn glass" onclick="closeW()">إغلاق</button></div>`;
+  }else{
+    $('sheet').innerHTML=`<h3 style="margin:0 0 8px;font-size:13px">سحب (متاح ${usd(db.bal)})</h3>
+      <input class="fld" id="to" placeholder="عنوان محفظتك">
+      <input class="fld" id="amt" type="number" placeholder="المبلغ">
+      <div class="row"><button class="btn gold" onclick="wd()">تأكيد</button>
+      <button class="btn glass" onclick="closeW()">إغلاق</button></div>`;
+  }
+}
+const closeW=()=>$('modal').classList.remove('on');
+function dep(){
+  const a=Number($('amt').value);
+  if(!a||a<10)return toast('الحد الأدنى 10$',true);
+  db.txs.unshift({k:'إيداع '+coin,a});db.bal+=a;save();closeW();render();toast('تم الإيداع '+usd(a));
+}
+function wd(){
+  const a=Number($('amt').value),to=$('to').value.trim();
+  if(to.length<15)return toast('عنوان غير صحيح',true);
+  if(a<20)return toast('الحد الأدنى 20$',true);
+  if(a>db.bal)return toast('الرصيد لا يكفي',true);
+  db.bal-=a;db.txs.unshift({k:'سحب '+coin,a});save();closeW();render();toast('طلب سحب '+usd(a));
+}
+function mock(n){
+  $('modal').classList.add('on');
+  $('sheet').innerHTML=`<h3 style="margin:0 0 8px;font-size:13px">${esc(n)}</h3>
+    <p class="muted">هذه اللعبة تحتاج مزوّدًا — المحاكاة للعرض فقط.</p>
+    <button class="btn glass" onclick="closeW()">إغلاق</button>`;
+}
+render();
+</script>
+</body>
+</html>
